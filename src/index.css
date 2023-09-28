@@ -12,7 +12,7 @@
 button {
   border: 0px;
   padding: 5px 10px; 
-  margin: 8px 0;
+  margin: 8px 5px;
   color: white;
   border-radius: 8px;
   background-color: #03A696;
@@ -21,11 +21,23 @@ button:hover {
   background-color: #04BF9D;
 }
 
+/* amplify authenticator */
+.amplify-button[data-variation='primary'] {
+  color: white;
+  border-radius: 8px;
+  background-color: #03A696;
+}
+.amplify-button:hover[data-variation='primary'] {
+  color: white;
+  border-radius: 8px;
+  background-color: #04BF9D;
+}
+
 /* navbar */
 .navbar {
   padding: 20px 0px;
   display: flex;
-  max-width: 600px;
+  max-width: 900px;
   align-items: center;
   margin: 0 auto;
   border-bottom: 1px solid #04BF9D;

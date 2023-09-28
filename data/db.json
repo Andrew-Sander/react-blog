@@ -1,12 +1,6 @@
 {
   "blogs": [
     {
-      "title": "My First Blog Post",
-      "body": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia quasi dolor dolorem architecto voluptatum possimus, saepe provident esse non numquam debitis officiis voluptate aspernatur error at nulla harum vel. Dolorum, corrupti reprehenderit nihil totam ullam quae adipisci asperiores quibusdam atque ex corporis perferendis optio, mollitia reiciendis cumque fugiat enim. Ipsam!",
-      "author": "andy",
-      "id": 1
-    },
-    {
       "title": "My First React app!",
       "body": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia quasi dolor dolorem architecto voluptatum possimus, saepe provident esse non numquam debitis officiis voluptate aspernatur error at nulla harum vel. Dolorum, corrupti reprehenderit nihil totam ullam quae adipisci asperiores quibusdam atque ex corporis perferendis optio, mollitia reiciendis cumque fugiat enim. Ipsam!",
       "author": "andy",
