@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { Link } from 'react-router-dom';
+//import useGetUser from '../useGetUser';
 
 const Profile = () => {
     const [blogPosts, setPosts] = useState([]);
+    //const currentUser = useGetUser();
     const [currentUser, setCurrentUser] = useState(null);
     
     useEffect(() => {

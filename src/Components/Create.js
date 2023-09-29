@@ -1,25 +1,51 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useCurrentUser from "../useCurrentUser";
+
+
+const getDate = () => {
+        const today = new Date();
+        const month = today.getMonth()+1;
+        const year = today.getFullYear();
+        const date = today. getDate();
+        return `${year}-${month}-${date}`;
+}
 
 const Create = () => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
-    const [author, setAuthor] = useState('andy');
+    const [author, setAuthor] = useState('');
+    const currentUser = useCurrentUser();
     const [isPending, setIsPending] = useState(false);
+    const [date, setDate] = useState(getDate());
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(currentUser && currentUser.username) {
+            setAuthor(currentUser.username)
+        }
+    }, [currentUser]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const blog = { title, body, author };
+        
+        const blog = { title, body, author, date };
 
-        fetch('http://localhost:8000/blogs', {
+        fetch('http://localhost:8000/api/blogPosts/create', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(blog)
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error("Network response not okay");
+            }
         }).then(() => {
             console.log('new blog added');
             setIsPending(false);
             navigate('/');
+        }).catch(error => {
+            console.error(error);
+            console.log(error);
         })
     }
 

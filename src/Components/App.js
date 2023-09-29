@@ -1,16 +1,16 @@
 import Create from './Create';
-import BlogDetails from './Components/BlogDetails';
+import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
 import Profile from './Profile';
 import Navbar from './Navbar';
-import Home from './Components/Home';
+import Home from './Home';
 import { RequireAuth } from './RequireAuth';
 import React, { useState, useEffect } from 'react';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Amplify } from 'aws-amplify';
-import awsExports from './aws-exports';
+import awsExports from '../aws-exports';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { Login } from './Login';

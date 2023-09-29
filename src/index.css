@@ -73,6 +73,7 @@ button:hover {
   max-width: 400px;
   border-radius: 8px;
   box-shadow: 1px 3px 5px rgb(186, 196, 226);
+  white-space: pre-wrap;
 }
 .blog-preview h2 {
   color: #04BF9D;
@@ -96,6 +97,9 @@ button:hover {
 }
 
 /* blog details page */
+.blog-details {
+  white-space: pre-wrap;
+}
 .blog-details h2{
   color: #04BF9D;
 }
