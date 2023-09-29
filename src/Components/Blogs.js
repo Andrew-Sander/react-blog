@@ -13,18 +13,17 @@ export default function Blogs() {
     }, []);
 
     return (
-        <div>
+        <div className="blog-list">
             <h1>header</h1>
             <ul>
                 { blogPosts.map((blogPost, index) => (
-                    <li key={index}>
-                        <div>{blogPost.title}</div>
-                        <div>{blogPost.body}</div>
-                        <div>{blogPost.author}</div>
-                    </li>
+                    <div className="blog-preview" key={index}>
+                        <h2>{blogPost.title}</h2>
+                        <article>{blogPost.body}</article>
+                        <p>By {blogPost.author}</p>
+                    </div>
                 ))}
             </ul>
         </div>
-        
     )
 }

@@ -1,9 +1,9 @@
 import Create from './Create';
-import BlogDetails from './BlogDetails';
+import BlogDetails from './Components/BlogDetails';
 import NotFound from './NotFound';
 import Profile from './Profile';
 import Navbar from './Navbar';
-import Home from './Home';
+import Home from './Components/Home';
 import { RequireAuth } from './RequireAuth';
 import React, { useState, useEffect } from 'react';
 

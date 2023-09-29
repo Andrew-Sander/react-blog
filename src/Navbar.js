@@ -22,7 +22,10 @@ const Navbar = () => {
             {route !== 'authenticated' ? (
                 <button onClick={() => navigate('/login')}>Login</button>
                 ) : (
-                <button onClick={() => logOut()}>Logout</button>
+                <div className="signedInLinks">
+                    <Link to='/profile'>My Profile</Link>
+                    <button onClick={() => logOut()}>Logout</button>
+                </div>
                 )}
             </div>
         </nav>

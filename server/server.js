@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 
 //CONTROLLERS
 const blogPostsController = require('./controllers/blogPosts_controller');
+
 app.use('/api/blogPosts/', blogPostsController);
 
 //LISTEN

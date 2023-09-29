@@ -5,9 +5,11 @@
   font-family: "Comfortaa";
 }
 .content {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
+  padding: 20px 0px;
+  display: flex;
+  max-width: 900px;
+  align-items: center;
+  margin: 0 auto;
 }
 button {
   border: 0px;
@@ -40,7 +42,7 @@ button:hover {
   max-width: 900px;
   align-items: center;
   margin: 0 auto;
-  border-bottom: 1px solid #04BF9D;
+  border-bottom: 0.5px solid #04BF9D;
 }
 .navbar h1 {
   color: #253659;
@@ -57,26 +59,34 @@ button:hover {
 .navbar a:hover {
   color: #04BF9D;
 }
-
+.signedInLinks {
+  display: inline-block;
+}
 
 /* list of blogs */
 .blog-list h2 {
   color: #253659;
 }
 .blog-preview {
-  margin: 30px 10px;
-  padding: 15px;
+  margin: 30px 0px;
+  padding: 20px;
   max-width: 400px;
   border-radius: 8px;
+  box-shadow: 1px 3px 5px rgb(186, 196, 226);
 }
 .blog-preview h2 {
   color: #04BF9D;
 }
 .blog-preview p {
+  color: #03A696;
+}
+.blog-preview article {
   color: #253659;
+  padding-bottom: 4px;
+  margin-bottom: 15px;
 }
 .blog-preview:hover {
-  box-shadow: 1px 3px 5px rgb(186, 196, 226);
+  box-shadow: 1px 3px 5px rgb(134, 146, 183);
 }
 .blog-preview:active {
   box-shadow: none;
@@ -102,6 +112,7 @@ button:hover {
 .create {
   width: 60%;
   min-width: 400px;
+  max-width: 400px;
   margin: 0 auto;
 }
 .create h2 { 
