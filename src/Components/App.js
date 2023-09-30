@@ -4,6 +4,7 @@ import NotFound from './NotFound';
 import Profile from './Profile';
 import Navbar from './Navbar';
 import Home from './Home';
+import PublicProfile from './PublicProfile';
 import { RequireAuth } from './RequireAuth';
 import React from 'react';
 
@@ -37,6 +38,7 @@ function App() {
                 <Profile />
               </RequireAuth>} />
             <Route path='/login' element={<Login />} />
+            <Route path='/publicprofile/:username' element={<PublicProfile />}/>
             <Route path='*' element={<NotFound />} />
           </Routes>
         </div>

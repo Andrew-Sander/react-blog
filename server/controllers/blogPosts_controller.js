@@ -14,6 +14,24 @@ blogPosts.get('/', async (req, res) => {
         console.log(err)
     }
 })
+//GET POSTS BY BLOG
+blogPosts.get('/:id', async (req, res) => {
+    try{
+        const id = req.params.id;
+        const foundPosts = await BlogPost.findAll({
+            where: {
+                blogID: id
+            },
+            order: [
+                ['postID', 'DESC']
+            ],
+        });
+        res.status(200).json(foundPosts);
+    } catch (err) {
+        res.status(500).send("server error");
+        console.log(err);
+    }
+})
 
 //GET PERSONAL POSTS
 blogPosts.get('/me/:username', async (req, res) => {

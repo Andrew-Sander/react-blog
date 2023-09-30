@@ -32,6 +32,39 @@ blogs.get('/me/:username', async (req, res) => {
     }
 })
 
+//GET BLOGS BY ID
+blogs.get('/id/:id', async (req, res) => {
+    try{
+        const id = req.params.id;
+        const foundBlogs = await Blog.findAll({
+            where: {
+                id: id
+            }
+        });
+        res.status(200).json(foundBlogs);
+    } catch (err) {
+        res.status(500).send("server error");
+        console.log(err);
+    }
+})
+
+
+//GET PUBLIC POSTS
+blogs.get('/postsby/:username', async (req, res) => {
+    try{
+        const username = req.params.username;
+        const foundBlogs = await Blog.findAll({
+            where: {
+                author: username
+            }
+        });
+        res.status(200).json(foundBlogs);
+    } catch (err) {
+        res.status(500).send("server error");
+        console.log(err);
+    }
+})
+
 //MAKE A BLOG
 blogs.post('/create', async (req, res) => {
     try {
