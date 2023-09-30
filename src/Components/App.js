@@ -5,7 +5,7 @@ import Profile from './Profile';
 import Navbar from './Navbar';
 import Home from './Home';
 import { RequireAuth } from './RequireAuth';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 

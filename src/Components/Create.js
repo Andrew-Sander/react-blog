@@ -1,70 +1,50 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import useCurrentUser from "../useCurrentUser";
-
-
-const getDate = () => {
-        const today = new Date();
-        const month = today.getMonth()+1;
-        const year = today.getFullYear();
-        const date = today. getDate();
-        return `${year}-${month}-${date}`;
-}
+import CreateBlog from "./CreateBlog";
+import Modal from "react-bootstrap/Modal";
+import CreatePost from "./CreatePost";
+import { useState } from "react";
 
 const Create = () => {
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
-    const [author, setAuthor] = useState('');
-    const currentUser = useCurrentUser();
-    const [isPending, setIsPending] = useState(false);
-    const [date, setDate] = useState(getDate());
-    const navigate = useNavigate();
 
-    useEffect(() => {
-        if(currentUser && currentUser.username) {
-            setAuthor(currentUser.username)
-        }
-    }, [currentUser]);
+    const [isOpen1, setIsOpen1] = useState(false);
+    const [isOpen2, setIsOpen2] = useState(false);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-        const blog = { title, body, author, date };
+    const showModal1 = () => {
+        setIsOpen1(true);
+    };
 
-        fetch('http://localhost:8000/api/blogPosts/create', {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(blog)
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error("Network response not okay");
-            }
-        }).then(() => {
-            console.log('new blog added');
-            setIsPending(false);
-            navigate('/');
-        }).catch(error => {
-            console.error(error);
-            console.log(error);
-        })
-    }
+    const hideModal1 = () => {
+        setIsOpen1(false);
+    };
+
+    const showModal2 = () => {
+        setIsOpen2(true);
+    };
+
+    const hideModal2 = () => {
+        setIsOpen2(false);
+    };
 
     return ( 
-        <div className="create">
-            <h2>Add a new blog</h2>
-            <form onSubmit={handleSubmit}>
-                <label className="form-label" htmlFor="">Blog title:</label>
-                <input className="form-control" type="text" required value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                />
-                <br />
-                <label className="form-label" htmlFor="">Blog body:</label>
-                <textarea className="form-control" required name="body-text" id="body-text" cols="30" rows="6" onChange={(e) => setBody(e.target.value)}></textarea>
-                <br />
-                { !isPending && <button type="submit" >Add blog</button> }
-                { isPending && <button disabled type="submit" >Adding blog...</button> }
-            </form>
-        </div>
+        <div>
+            <button onClick={showModal1}>Start a new Blog</button>
+            <Modal show={isOpen1} onHide={hideModal1}>
+                <Modal.Body>
+                    <CreateBlog />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button onClick={hideModal1}>Close</button>
+                </Modal.Footer>
+            </Modal>
+            <button onClick={showModal2}>Add a new Blog Post</button>
+            <Modal show={isOpen2} onHide={hideModal2}>
+                <Modal.Body>
+                    <CreatePost />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button onClick={hideModal2}>Close</button>
+                </Modal.Footer>
+            </Modal>
+        </div> 
     );
 }
  

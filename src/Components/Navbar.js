@@ -20,7 +20,7 @@ const Navbar = () => {
             <Link to="/">Home</Link>
             <Link to="/create">Create</Link>
             {route !== 'authenticated' ? (
-                <button onClick={() => navigate('/login')}>Login</button>
+                <button onClick={() => navigate('/login')}>Login|Signup</button>
                 ) : (
                 <div className="signedInLinks">
                     <Link to='/profile'>My Profile</Link>

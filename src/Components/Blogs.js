@@ -1,29 +1,27 @@
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
+import useFetch from "../useFetch";
 
-export default function Blogs() {
-    const [blogPosts, setPosts] = useState([]);
+export default function Blogs({ user }) {
+    const apiUrl = user ? `http://localhost:8000/api/blogs/me/${user.username}` : 'http://localhost:8000/api/blogs/';
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await fetch('http://localhost:8000/api/blogPosts/');
-            const json = await response.json();
-            setPosts(json);
-        }
-        fetchData();
-    }, []);
+    const { data: blogs, isPending, error } = useFetch(apiUrl);
 
     return (
         <div className="blog-list">
-            <h1>header</h1>
-            <ul>
-                { blogPosts.map((blogPost, index) => (
+            { isPending && <div>Loading...</div> }
+            { error && <div>{ error }</div>}
+            { blogs && (
+                <div>
+                    { blogs.map((blog, index) => (
                     <div className="blog-preview" key={index}>
-                        <h2>{blogPost.title}</h2>
-                        <article>{blogPost.body}</article>
-                        <p>By {blogPost.author}</p>
+                        <p>{blog.category}</p>
+                        <h2>{blog.title}</h2>
+                        <article>{blog.details}</article>
+                        <p>By {blog.author}</p>
                     </div>
                 ))}
-            </ul>
+                </div>
+            )}
         </div>
     )
 }

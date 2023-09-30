@@ -11,12 +11,15 @@
   align-items: center;
   margin: 0 auto;
 }
+.post-button {
+  width: 100%;
+}
 button {
   border: 0px;
   padding: 5px 10px; 
-  margin: 8px 5px;
+  margin: 0px;
   color: white;
-  border-radius: 8px;
+  border-radius: 5px;
   background-color: #03A696;
 }
 button:hover {
@@ -62,6 +65,51 @@ button:hover {
 .signedInLinks {
   display: inline-block;
 }
+
+/* dropdown menu */
+.dropdown {
+  position: relative;
+  color: #253659;
+}
+.dropdown-button {
+  width: 200px;
+  margin: 0;
+  border: 0px;
+  padding: 5px 10px;
+  border: 1px solid #03A696;
+  color: #253659;
+  background-color: white;
+  border-radius: 3px;
+
+}
+.dropdown-button:hover {
+  color: white;
+}
+.menu {
+  position: absolute;
+  top: -10px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 0.5px solid white;
+  width: 200px;
+  border: 1px solid #03A696;
+  background-color: white;
+}
+.menu li button {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border-bottom: 0.5px solid #03A696;
+  background-color: white;
+  color: #253659;
+}
+li button:hover {
+  color: white;
+  background-color: #04BF9D;
+}
+
 
 /* list of blogs */
 .blog-list h2 {
@@ -113,19 +161,15 @@ button:hover {
 }
 
 /* create page */
-.create {
-  width: 60%;
-  min-width: 400px;
-  max-width: 400px;
+.create-modal {
+  max-width: 900px;
   margin: 0 auto;
+  color: #253659;
 }
-.create h2 { 
+.create-modal h2 { 
+  margin-top: 30px;
   text-align: center;
-  color: #253659;
 }
-.create label {
-  color: #253659;
-}
-.create button {
+.create-modal button {
   margin: 8px auto;
 }

@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class BlogPost extends Model {
+  class Blog extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,20 +11,16 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      BlogPost.belongsTo(models.Blog, { foreignKey: 'blogID'})
+      Blog.belongsTo(models.User, { foreignKey: 'userID'})
+      Blog.hasMany(models.BlogPost, {foreignKey: 'blogID'})
     }
   }
-  BlogPost.init({
-    postID: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true
-    },
+  Blog.init({
     title: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    body: {
+    description: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -32,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    date: {
+    category: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -40,16 +36,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    blogID: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE,
   }, {
     sequelize,
-    modelName: 'BlogPost',
-    tableName: 'BlogPosts',
+    modelName: 'Blog',
+    tableName: 'Blogs'
   });
-  return BlogPost;
+  return Blog;
 };
