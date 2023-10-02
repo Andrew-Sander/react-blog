@@ -15,7 +15,7 @@ const Navbar = () => {
 
     return ( 
         <nav className="navbar">
-            <h1>My React Blog</h1>
+            <Link to={'/'} style={{margin: 0, padding: 0}}><h1>My React Blog</h1></Link> 
             <div className="links">
             <Link to="/">Home</Link>
             <Link to="/create">Create</Link>

@@ -15,12 +15,21 @@
 .post-button {
   width: 100%;
 }
+.disabled {
+  background-color: #66a19b;
+}
+.about-edit-btn {
+  margin-left: 8px;
+}
+.disabled:hover {
+  background-color: #66a19b !important;
+}
 button {
   border: 0px;
   padding: 5px 10px; 
   margin: 0px;
   color: white;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: #03A696;
 }
 button:hover {
@@ -101,11 +110,12 @@ p {
   background-color: white;
 }
 .menu li button {
+  top: 0 !important;
   width: 100% !important;
   height: 100% !important;
   margin: 0 !important;
   border-radius: 0 !important;
-  border-bottom: 0.5px solid #03A696;
+  border-bottom: 0.8px solid #03A696;
   background-color: white;
   color: #253659;
 }
@@ -116,9 +126,6 @@ li button:hover {
 
 
 /* list of blogs */
-.blog-list {
-  width: 80%;
-}
 .blog-list h2 {
   color: #253659;
 }
@@ -128,7 +135,7 @@ li button:hover {
 }
 
 .blog-preview {
-  margin: 30px 0px;
+  margin: 20px 0px;
   padding: 20px;
   max-width: 550px;
   border-radius: 5px;
@@ -138,7 +145,7 @@ li button:hover {
   hyphens: auto;
 }
 .blog-preview h2 {
-  color: #253659;
+  color: #03A696;
 }
 .blog-preview p {
   color: #253659;
@@ -179,11 +186,11 @@ li button:hover {
   color: #253659;
   margin-top: 20px;
 }
-.blog-details ul {
+.categories-box ul {
   width: 200px;
   list-style: circle;
 }
-.blog-details li {
+.categories-box li {
   margin-bottom: 5px;
 }
 .blog-details a {
@@ -224,16 +231,60 @@ li button:hover {
   margin-top: 5px;
 }
 
-/* create page */
+/* categories */
+.categories-box {
+  margin: 18px 0px;
+  padding: 20px;
+  border: 1px solid #03A696;
+  border-radius: 5px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.categories-box a {
+  text-decoration: none;
+  color: #03A696;
+}
+.categories-box a:hover {
+  text-decoration: none;
+  color: #04BF9D;
+}
+
+/* create post modal */
 .create-modal {
   max-width: 900px;
   margin: 0 auto;
   color: #253659;
 }
 .create-modal h2 { 
-  margin-top: 30px;
   text-align: center;
 }
 .create-modal button {
   margin: 8px auto;
+}
+
+/* create blog */
+.create-blog {
+  max-width: 400px;
+  margin: 0 auto;
+  color: #253659;
+}
+.create-blog h2 { 
+  margin-top: 30px;
+  text-align: center;
+}
+.create-blog button {
+  margin: 8px auto;
+}
+
+/* validation */
+.category-validation {
+  color: rgb(234, 60, 60);
+}
+.delete-button {
+  color: white !important;
+  background-color: rgb(224, 35, 35);
+}
+.delete-button:hover {
+  background-color: rgb(255, 82, 82);
 }

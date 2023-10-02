@@ -14,9 +14,11 @@ app.use(express.urlencoded({ extended: false }));
 //CONTROLLERS
 const blogPostsController = require('./controllers/blogPosts_controller');
 const blogsController = require('./controllers/blogs_controller');
+const usersController = require('./controllers/users_controller');
 
 app.use('/api/blogPosts/', blogPostsController);
 app.use('/api/blogs/', blogsController);
+app.use('/api/users/', usersController);
 
 //LISTEN
 app.listen(8000, () => {

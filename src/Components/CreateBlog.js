@@ -38,13 +38,14 @@ const CreateBlog = () => {
         setMenuOpen(!menuOpen);
         setCategory(name);
     }
-
+    const [categoryValidation, setCategoryValidation] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
         
         const blog = { title, description, author, category };
         if (category === '') {
-            alert("Please choose a category");
+            setCategoryValidation('please choose a category');
+            return;
         } else {
             fetch('http://localhost:8000/api/blogs/create', {
             method: 'POST',
@@ -64,21 +65,13 @@ const CreateBlog = () => {
             })
         }
     }
-    // const btnText = '';
-    // const isCategorySelected = () => {
-    //     if (category == '') {
-            
-    //     } else {
-            
-    //     }
-    // }
 
     return ( 
-        <div className="create-modal">
-            <h2>Create a blog</h2>
+        <div className="create-blog">
+            <h2>Start a blog</h2>
             { category ? (
-                <button className="dropdown-button" onClick={handleMenuOpen}>{category}</button>
-            ) : <button className="dropdown-button" onClick={handleMenuOpen}>Categories</button> }
+                <button className="dropdown-button" onClick={handleMenuOpen}>{category} <i className="bi bi-caret-down-fill float-end"></i></button>
+            ) : <button className="dropdown-button" onClick={handleMenuOpen}>Categories <i className="bi bi-caret-down-fill float-end"></i></button> }
             <div className="dropdown">
                 { menuOpen ? (
                     <ul className="menu">
@@ -91,7 +84,7 @@ const CreateBlog = () => {
                 ) : null}
             </div>
             <form onSubmit={handleSubmit}>
-                
+                <p className="category-validation">{categoryValidation}</p>
                 <label className="form-label">Title:</label>
                 <input className="form-control" type="text" required value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -100,7 +93,7 @@ const CreateBlog = () => {
                 <label className="form-label">Description:</label>
                 <textarea className="form-control" required name="description-text" id="body-text" cols="30" rows="3" onChange={(e) => setDescription(e.target.value)}></textarea>
                 <br />
-                { !isPending && <button className="post-button" type="submit" >Post</button> }
+                { !isPending && <button className="post-button" type="submit" >Create</button> }
                 { isPending && <button disabled type="submit" >Adding blog...</button> }
             </form>
         </div>

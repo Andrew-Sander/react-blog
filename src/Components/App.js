@@ -1,4 +1,4 @@
-import Create from './Create';
+import CreateBlog from './CreateBlog';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
 import Profile from './Profile';
@@ -15,6 +15,7 @@ import awsExports from '../aws-exports';
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import { Login } from './Login';
+import CategoriesPage from './CategoriesPage';
 Amplify.configure(awsExports)
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/create' element={
               <RequireAuth>
-                <Create />
+                <CreateBlog />
               </RequireAuth>
               } 
             />
@@ -39,6 +40,7 @@ function App() {
               </RequireAuth>} />
             <Route path='/login' element={<Login />} />
             <Route path='/publicprofile/:username' element={<PublicProfile />}/>
+            <Route path='/categories/:category' element={<CategoriesPage />}/>
             <Route path='*' element={<NotFound />} />
           </Routes>
         </div>

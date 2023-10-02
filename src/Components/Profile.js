@@ -1,64 +1,100 @@
 import Blogs from './Blogs';
 import useCurrentUser from '../useCurrentUser';
-import CreateBlog from "./CreateBlog";
-import Modal from "react-bootstrap/Modal";
-import CreatePost from "./CreatePost";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Profile = () => {
 
+    const [currentUsername, setCurrentUsername] = useState('');
+
     const currentUser = useCurrentUser();
+    
+    const [ about, setAbout ] = useState('');
+    const [user, setUser] = useState({});
+    const [isEdit, setIsEdit] = useState(false);
 
-    const [isOpen1, setIsOpen1] = useState(false);
-    const [isOpen2, setIsOpen2] = useState(false);
+    useEffect(() => {
+        if(currentUser && currentUser.username) {
+            setCurrentUsername(currentUser.username);
+        }
+    }, [currentUser]);
 
-    const showModal1 = () => {
-        setIsOpen1(true);
-    };
+    useEffect(() => {
+        const fetchUser = async () => {
+            const response = await fetch(`http://localhost:8000/api/users/username/${currentUsername}`);
+            const json = await response.json();
+            setUser(json);
+        }
+        if (currentUsername) {
+            fetchUser();
+        }
+    }, [currentUsername]);
 
-    const hideModal1 = () => {
-        setIsOpen1(false);
-    };
+    useEffect(() => {
+        if(user) {
+            setAbout(user.about);
+        }
+    }, [user]);
 
-    const showModal2 = () => {
-        setIsOpen2(true);
-    };
+    const handleAboutSubmit = (e) => {
+        e.preventDefault();
+        console.log(currentUsername);
+        const userToPost = { name:currentUsername, about };
 
-    const hideModal2 = () => {
-        setIsOpen2(false);
-    };
+        fetch('http://localhost:8000/api/users/update', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userToPost)
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error("Network response not okay");
+            }
+        }).then(() => {
+            console.log('about updated');
+        }).catch(error => {
+            console.error(error);
+            console.log(error);
+        })
+        setIsEdit(false);
+    }
+
+    const handleEdit = () => {
+        console.log('set is edit to true')
+        setIsEdit(true);
+    }
 
     if (!currentUser) {
         return <p>Loading...</p>;
     }
     return ( 
         <div>
-            <div className='row g-0'>
-                <div className='col-8'>
+            <div className='row'>
+                <div className='col-sm-7'>
                     <h2>Welcome {currentUser?.username}</h2>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit...</p>
-                    <h3>My Blogs:</h3>
-                    <Blogs user={currentUser} />
+                    <Link to={'/create'}><h3 className='mt-4'>Start a new blog</h3></Link>
+                    <Blogs user={currentUser}/>
                 </div>
-                <div className='col-4'>
-                    <button onClick={showModal1}>Start a new Blog</button>
-                    <Modal show={isOpen1} onHide={hideModal1}>
-                        <Modal.Body>
-                            <CreateBlog />
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <button onClick={hideModal1}>Close</button>
-                        </Modal.Footer>
-                    </Modal>
-                    <button onClick={showModal2}>Add a new Blog Post</button>
-                    <Modal show={isOpen2} onHide={hideModal2}>
-                        <Modal.Body>
-                            <CreatePost />
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <button onClick={hideModal2}>Close</button>
-                        </Modal.Footer>
-                    </Modal>
+                <div className=' col-sm-5 categories-box'>
+                    <h3>About me:</h3>
+                    <form style={{margin: '20px 0'}} onSubmit={handleAboutSubmit}>
+                        {isEdit && (
+                            <div>
+                                <textarea className="form-control" required name="description-text" id="body-text" cols="30" rows="5" value={about} onChange={(e) => setAbout(e.target.value)}></textarea>
+                                <br />
+                                <button className='' type="submit" >Save</button>
+                                <button disabled className='about-edit-btn  disabled'>Edit</button>
+                            </div>
+                        )}
+                        {!isEdit && (
+                            <div>
+                                <textarea className="form-control" required name="description-text" id="body-text" cols="30" rows="5" value={about} disabled onChange={(e) => setAbout(e.target.value)}></textarea>
+                                <br />
+                                <button disabled className='disabled' >Save</button>
+                                <button className='about-edit-btn' onClick={handleEdit}>Edit</button>
+                            </div>
+                        )}
+                    </form>
                 </div>
             </div>
         </div>
