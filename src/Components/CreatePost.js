@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import useCurrentUser from "../useCurrentUser";
 
 
@@ -16,8 +15,7 @@ const CreatePost = ({ hideModal, id, onCreate }) => {
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('');
     const [isPending, setIsPending] = useState(false);
-    const [date, setDate] = useState(getDate());
-    const navigate = useNavigate();
+    const [date, setDate] = useState('');
     const currentUser = useCurrentUser();
 
     useEffect(() => {
@@ -25,6 +23,10 @@ const CreatePost = ({ hideModal, id, onCreate }) => {
             setAuthor(currentUser.username)
         }
     }, [currentUser]);
+
+    useEffect(() => {
+        setDate(getDate());
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();

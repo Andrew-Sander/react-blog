@@ -1,18 +1,34 @@
+import { useState } from "react";
 import Blogs from "./Blogs";
 import Categories from "./Categories";
+import { Modal } from "react-bootstrap";
 
 const Home = () => {
-    // const { data:blogs, isPending, error} = useFetch('http://localhost:8000/blogs');
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const showModal = () => {
+        setIsOpen(true);
+    };
+
+    const hideModal = () => {
+        setIsOpen(false);
+    };
+
     return ( 
         <div className="home">
-            <h2>All Blogs</h2>
-            <div className="row">
-                <div className="col-md-7">
-                    <Blogs />
-                </div>
-                <div className="col-md-5">
+            <h1 className="d-inline-block">All Blogs</h1>
+            <button className="float-end" onClick={showModal}>Browse Categories</button>
+            <Modal show={isOpen} onHide={hideModal}>
+                <Modal.Body>
                     <Categories />
-                </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <button onClick={hideModal}>Close</button>
+                </Modal.Footer>
+            </Modal>
+            <div className="row">
+                <Blogs />
             </div>
         </div>
      );

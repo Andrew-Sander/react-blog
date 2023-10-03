@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../useFetch";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 
 const PublicProfile = () => {
     const { username } = useParams();
@@ -32,7 +31,7 @@ const PublicProfile = () => {
                 <div className="col-5">
                     { userIsPending && <div>Loading...</div> }
                     { userError && <div>{ userError }</div>}
-                    <div className="categories-box">
+                    <div style={{border: '1px solid #45C4B0'}} className="categories-box">
                         <h3>About {username}</h3>
                         { users && (
                             <article>{users.about}</article>

@@ -129,39 +129,37 @@ const EditBlog = ({ id, onEdit, onDelete, hideModalEdit }) => {
                     </ul>
                 ) : null}
             </div>
-                {blogIsPending && (
-                    <p>Loading data..</p>
-                )}
-                {blog && (
-                    <form onSubmit={handleSubmit}>
-                        <label className="form-label">Title:</label>
-                        <input className="form-control" type="text" required value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        />
-                        <br />
-                        <label className="form-label">Description:</label>
-                        <textarea className="form-control" required name="description-text" id="body-text" cols="30" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-                        <br />
-                        { !isPending && <button className="post-button" type="submit" >Save</button> }
-                        { isPending && <button disabled type="submit" >Editing blog...</button> }
-                    </form>
-                )}
-                <button className="delete-button" onClick={showModalDelete}>Delete Blog</button>
-                <button className="float-end" onClick={hideModalEdit}>Cancel</button>
-                <Modal show={isOpenDelete} onHide={hideModalDelete}>
-                    <Modal.Header>
-                        <h2>Are you sure you want to delete this blog?</h2>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <br />
-                        <p>This is irreversible</p>
-                        <br />
-                        <br />
-                        <button className="delete-button" onClick={handleDelete}>Delete</button>
-                        <button className="float-end" onClick={hideModalDelete}>Cancel</button>
-                    </Modal.Body>
-                </Modal>
-                
+            {blogIsPending && (
+                <p>Loading data..</p>
+            )}
+            {blogError && ( <div>{blogError}</div> )}
+            {blog && (
+                <form onSubmit={handleSubmit}>
+                    <label className="form-label">Title:</label>
+                    <input className="form-control" type="text" required value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <br />
+                    <label className="form-label">Description:</label>
+                    <textarea className="form-control" required name="description-text" id="body-text" cols="30" rows="3" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                    <br />
+                    { !isPending && <button className="post-button" type="submit" >Save</button> }
+                    { isPending && <button disabled type="submit" >Editing blog...</button> }
+                </form>
+            )}
+            <button className="delete-button" onClick={showModalDelete}>Delete Blog</button>
+            <button className="float-end" onClick={hideModalEdit}>Cancel</button>
+            <Modal show={isOpenDelete} onHide={hideModalDelete}>
+                <Modal.Body style={{border:"2px solid red", borderRadius:"8px"}}>
+                    <br />
+                    <h2>Are you sure you want to delete this blog?</h2>
+                    <br />
+                    <p>This is irreversible</p>
+                    <br />
+                    <button className="delete-button" onClick={handleDelete}>Delete</button>
+                    <button className="float-end" onClick={hideModalDelete}>Cancel</button>
+                </Modal.Body>
+            </Modal>
         </div>
     );
 }

@@ -6,7 +6,7 @@ const Categories = () => {
     const { data: categories, isPending, error } = useFetch('http://localhost:8000/api/blogs/categories');
 
     return ( 
-        <div className="categories-box">
+        <div className="categories">
             <h3>Browse by Category</h3>
             { isPending && ( <div>Loading categories...</div> )}
             { error && ( <div>{ error }</div> )}

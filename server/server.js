@@ -10,6 +10,7 @@ require('dotenv').config();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, '../build')))
 
 //CONTROLLERS
 const blogPostsController = require('./controllers/blogPosts_controller');
@@ -24,3 +25,7 @@ app.use('/api/users/', usersController);
 app.listen(8000, () => {
     console.log('server is running on port 8000')
 });
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+})

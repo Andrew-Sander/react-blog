@@ -12,7 +12,6 @@ const Profile = () => {
     
     const [ about, setAbout ] = useState('');
     const [user, setUser] = useState({});
-    const [isEdit, setIsEdit] = useState(false);
 
     useEffect(() => {
         if(currentUser && currentUser.username) {
@@ -56,45 +55,40 @@ const Profile = () => {
             console.error(error);
             console.log(error);
         })
-        setIsEdit(false);
     }
 
     const handleEdit = () => {
-        console.log('set is edit to true')
-        setIsEdit(true);
+        document.getElementById('save-btn').style.display='inline-block';
+        document.getElementById('edit-btn').style.display='none';
+        document.getElementById('about-text').disabled=false;
+    }
+    const handleSave = () => {
+        document.getElementById('edit-btn').style.display='inline-block';
+        document.getElementById('save-btn').style.display='none';
+        document.getElementById('about-text').disabled=true;
     }
 
     if (!currentUser) {
         return <p>Loading...</p>;
     }
     return ( 
-        <div>
-            <div className='row'>
-                <div className='col-sm-7'>
-                    <h2>Welcome {currentUser?.username}</h2>
-                    <Link to={'/create'}><h3 className='mt-4'>Start a new blog</h3></Link>
-                    <Blogs user={currentUser}/>
+        <div className='profile-page'>
+            <div className='about-box'>
+                <div style={{borderBottom: '1px solid #45C4B0', padding:'10px 0'}}>
+                    <h2 >{currentUser?.username}'s Profile</h2>
                 </div>
-                <div className=' col-sm-5 categories-box'>
-                    <h3>About me:</h3>
-                    <form style={{margin: '20px 0'}} onSubmit={handleAboutSubmit}>
-                        {isEdit && (
-                            <div>
-                                <textarea className="form-control" required name="description-text" id="body-text" cols="30" rows="5" value={about} onChange={(e) => setAbout(e.target.value)}></textarea>
-                                <br />
-                                <button className='' type="submit" >Save</button>
-                                <button disabled className='about-edit-btn  disabled'>Edit</button>
-                            </div>
-                        )}
-                        {!isEdit && (
-                            <div>
-                                <textarea className="form-control" required name="description-text" id="body-text" cols="30" rows="5" value={about} disabled onChange={(e) => setAbout(e.target.value)}></textarea>
-                                <br />
-                                <button disabled className='disabled' >Save</button>
-                                <button className='about-edit-btn' onClick={handleEdit}>Edit</button>
-                            </div>
-                        )}
-                    </form>
+                <form style={{margin: '20px 0'}} onSubmit={handleAboutSubmit}>
+                    <h4 className='d-inline-block'>About me:</h4>
+                    <textarea disabled className="form-control" required name="about-text" id="about-text" cols="30" rows="5" value={about} onChange={(e) => setAbout(e.target.value)}></textarea>
+                    <button type='button' id='edit-btn' onClick={handleEdit}>Edit</button>
+                    <button style={{display:"none"}} id='save-btn' type="submit" onClick={handleSave}>Save</button>
+                </form>
+            </div>
+            <div>
+                <div className='profile-blogs'>
+                    <h2>My Blogs:</h2>
+                    <Link to={'/create'}><h3 style={{textDecoration:"underline"}} className='mt-1 d-inline-block'>Start a new blog</h3></Link>
+                    <Blogs user={currentUser}/>
                 </div>
             </div>
         </div>

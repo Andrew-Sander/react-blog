@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../useFetch";
 import useCurrentUser from "../useCurrentUser";
 import { Link } from 'react-router-dom';
@@ -72,16 +72,16 @@ const BlogDetails = () => {
                 { blogIsPending && <div>Loading...</div> }
                 { blogError && <div>{ blogError }</div>}
                 { blog && (
-                    <div>
+                    <div className="details">
                         { blog.map((blog, index) => (
                             <div key={index}>
                                 {currentUsername === blog.author && (
                                     <div>
                                         <h3 className="d-inline-block me-3 mt-3">You own this blog</h3>
-                                        <Link to={'/profile'}><strong>Edit it</strong></Link> 
+                                        <Link to={'/profile'}><strong>Edit or Make a Post</strong></Link> 
                                     </div>
                                 )}
-                                <div className="blogpost-preview">
+                                <div className="blogdetails-header">
                                     <h5 className="category"><Link to={`/categories/${blog.category}`}>{blog.category}</Link></h5>
                                     <h1>{blog.title}</h1>
                                     <p>By <Link to={`/publicprofile/${blog.author}`}>{blog.author}</Link> </p>
@@ -117,15 +117,15 @@ const BlogDetails = () => {
                             { blog.map((blog, index) => (
                                 <div key={index}>
                                     <div  className="blogpost-preview">
-                                        <h2>About this blog</h2>
+                                        <h2>About:</h2>
                                         <article>{blog.description}</article>
                                     </div>
                                 </div>
                             ))}
                         </div>
                     )}
-                    <div className="categories-box">
-                        <h2>Posts</h2>
+                    <div style={{border: '1px solid #45C4B0'}} className="categories-box">
+                        <h2>Posts:</h2>
                         <ul>
                             {newPosts && (
                                 newPosts.map((post, index) => (
@@ -139,13 +139,10 @@ const BlogDetails = () => {
                 </div>
             </div>
             <Modal show={isOpenDelete} onHide={hideModalDelete}>
-                <Modal.Header>
+                <Modal.Body style={{border:"2px solid red", borderRadius:"8px"}}>
+                    <br />
                     <h2>Are you sure you want to delete this blog?</h2>
-                </Modal.Header>
-                <Modal.Body>
-                    <br />
                     <p>This is irreversible</p>
-                    <br />
                     <br />
                     <button className="delete-button" onClick={handleDelete}>Delete</button>
                     <button className="float-end" onClick={hideModalDelete}>Cancel</button>

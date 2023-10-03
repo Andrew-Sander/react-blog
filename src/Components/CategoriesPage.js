@@ -8,7 +8,7 @@ const CategoriesPage = () => {
 
     return ( 
         <div>
-            <h1 className="d-inline-block">{category} Blogs</h1><Link to={'/'}><button className="mx-5">Back Home</button></Link> 
+            <h1 className="d-inline-block">{category} Blogs</h1><Link className="float-end" to={'/'}><button>Back Home</button></Link> 
             <div className="blog-list">
                     { isPending && <div>Loading...</div> }
                     { error && <div>{ error }</div>}

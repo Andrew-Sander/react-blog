@@ -39,6 +39,7 @@ const CreateBlog = () => {
         setCategory(name);
     }
     const [categoryValidation, setCategoryValidation] = useState('');
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         
