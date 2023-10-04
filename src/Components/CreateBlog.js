@@ -17,7 +17,7 @@ const CreateBlog = () => {
     
     useEffect(() => {
         const fetchCategories = async () => {
-            const response = await fetch('http://localhost:8000/api/blogs/categories');
+            const response = await fetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/categories');
             const json = await response.json();
             setCategories(json);
         }
@@ -39,7 +39,7 @@ const CreateBlog = () => {
         setCategory(name);
     }
     const [categoryValidation, setCategoryValidation] = useState('');
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         
@@ -48,7 +48,7 @@ const CreateBlog = () => {
             setCategoryValidation('please choose a category');
             return;
         } else {
-            fetch('http://localhost:8000/api/blogs/create', {
+            fetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/create', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(blog)

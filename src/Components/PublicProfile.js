@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const PublicProfile = () => {
     const { username } = useParams();
-    const { data: blogs, error, isPending } = useFetch('http://localhost:8000/api/blogs/postsby/' + username);
-    const { data: users, userError, userIsPending } = useFetch('http://localhost:8000/api/users/username/' + username);
+    const { data: blogs, error, isPending } = useFetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/postsby/' + username);
+    const { data: users, userError, userIsPending } = useFetch('https://lords-of-blogtown.onrender.com:8000/api/users/username/' + username);
 
     return ( 
         <div>

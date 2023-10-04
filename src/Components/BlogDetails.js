@@ -42,12 +42,12 @@ const BlogDetails = () => {
 
     const handleDelete = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/blogPosts/post/${selectedPostID}`);
+            const response = await fetch(`https://lords-of-blogtown.onrender.com:8000/api/blogPosts/post/${selectedPostID}`);
             const postToDelete = await response.json();
     
             console.log("Deleting post:", postToDelete);
             
-            const deleteResponse = await fetch('http://localhost:8000/api/blogPosts/delete', {
+            const deleteResponse = await fetch('https://lords-of-blogtown.onrender.com:8000/api/blogPosts/delete', {
                 method: 'DELETE',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(postToDelete)

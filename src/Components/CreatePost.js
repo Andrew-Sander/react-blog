@@ -35,7 +35,7 @@ const CreatePost = ({ hideModal, id, onCreate }) => {
         if(onCreate) {
             onCreate(blogPost);
         }
-        fetch('http://localhost:8000/api/blogPosts/create', {
+        fetch('https://lords-of-blogtown.onrender.com:8000/api/blogPosts/create', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(blogPost)

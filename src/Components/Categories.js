@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Categories = () => {
 
-    const { data: categories, isPending, error } = useFetch('http://localhost:8000/api/blogs/categories');
+    const { data: categories, isPending, error } = useFetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/categories');
 
     return ( 
         <div className="categories">

@@ -6,7 +6,7 @@ import { Modal } from "react-bootstrap";
 
 const EditBlog = ({ id, onEdit, onDelete, hideModalEdit }) => {
 
-    const { data: blog, blogError, blogIsPending } = useFetch('http://localhost:8000/api/blogs/id/' + id);
+    const { data: blog, blogError, blogIsPending } = useFetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/id/' + id);
 
     const [title, setTitle] = useState('');
     const [author, setAuthor] = useState('');
@@ -33,7 +33,7 @@ const EditBlog = ({ id, onEdit, onDelete, hideModalEdit }) => {
 
     useEffect(() => {
         const fetchCategories = async () => {
-            const response = await fetch('http://localhost:8000/api/blogs/categories');
+            const response = await fetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/categories');
             const json = await response.json();
             setCategories(json);
         }
@@ -62,7 +62,7 @@ const EditBlog = ({ id, onEdit, onDelete, hideModalEdit }) => {
         if (category === '') {
             alert("Please choose a category");
         } else {
-            fetch('http://localhost:8000/api/blogs/edit', {
+            fetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/edit', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(blog)
@@ -85,7 +85,7 @@ const EditBlog = ({ id, onEdit, onDelete, hideModalEdit }) => {
     const handleDelete = () => {
         const blog = { id, title, description, author, category };
 
-        fetch('http://localhost:8000/api/blogs/delete', {
+        fetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/delete', {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(blog)

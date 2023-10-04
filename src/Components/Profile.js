@@ -21,7 +21,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchUser = async () => {
-            const response = await fetch(`http://localhost:8000/api/users/username/${currentUsername}`);
+            const response = await fetch(`https://lords-of-blogtown.onrender.com:8000/api/users/username/${currentUsername}`);
             const json = await response.json();
             setUser(json);
         }
@@ -41,7 +41,7 @@ const Profile = () => {
         console.log(currentUsername);
         const userToPost = { name:currentUsername, about };
 
-        fetch('http://localhost:8000/api/users/update', {
+        fetch('https://lords-of-blogtown.onrender.com:8000/api/users/update', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userToPost)
