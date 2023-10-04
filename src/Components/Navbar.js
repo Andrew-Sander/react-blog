@@ -15,7 +15,7 @@ const Navbar = () => {
 
     return ( 
         <nav className="navbar">
-            <Link to={'/'} style={{margin: 0, padding: 0}}><h1>Lords of Blogtown</h1></Link> 
+            <Link to={'/'} style={{margin: 0, padding: 0}}><h1>Blogtown</h1></Link> 
             <div className="links">
             <Link to="/">Home</Link>
             <Link to="/create">Create</Link>
