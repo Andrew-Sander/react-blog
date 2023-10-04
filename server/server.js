@@ -4,7 +4,7 @@ const app = express();
 const { Sequelize } = require('sequelize');
 const path = require('path');
 const cors = require('cors');
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 10000
 
 //CONFIGURATION
 require('dotenv').config();
@@ -23,7 +23,7 @@ app.use('/api/blogs/', blogsController);
 app.use('/api/users/', usersController);
 
 //LISTEN
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0' () => {
     console.log(`server is running on port ${PORT}`)
 });
 // app.listen(10000, () => {
