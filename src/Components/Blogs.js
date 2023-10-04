@@ -6,7 +6,7 @@ import CreatePost from "./CreatePost";
 import { Modal } from "react-bootstrap";
 
 export default function Blogs({ user }) {
-    const apiUrl = user ? `https://lords-of-blogtown.onrender.com/api/blogs/me/${user.username}` : `https://lords-of-blogtown.onrender.com/api/blogs/`;
+    const apiUrl = user ? `https://lords-of-blogtown.onrender.com:10000/api/blogs/me/${user.username}` : `https://lords-of-blogtown.onrender.com:10000/api/blogs/`;
 
     const { data: blogs, isPending, error } = useFetch(apiUrl);
     const [newBlogs, setNewBlogs] = useState();
