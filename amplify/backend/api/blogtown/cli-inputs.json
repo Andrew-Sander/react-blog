@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/api": {
+      "name": "/api",
+      "lambdaFunction": "reactblog1cbd1990",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

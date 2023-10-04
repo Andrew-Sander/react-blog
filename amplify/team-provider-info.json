@@ -14,6 +14,14 @@
     "categories": {
       "auth": {
         "reactblog70bd4387": {}
+      },
+      "function": {
+        "reactblog1cbd1990": {
+          "dbUsername": "postgres",
+          "dbPassword": "h9e8UgsOznYBqfvW",
+          "dbName": "postgres",
+          "dbHost": "db.bbbeaccssisqukaxbvgz.supabase.co"
+        }
       }
     }
   }
