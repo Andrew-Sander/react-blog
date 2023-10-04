@@ -21,7 +21,7 @@ const Profile = () => {
 
     useEffect(() => {
         const fetchUser = async () => {
-            const response = await fetch(`https://lords-of-blogtown.onrender.com:8000/api/users/username/${currentUsername}`);
+            const response = await fetch(`https://lords-of-blogtown.onrender.com/api/users/username/${currentUsername}`);
             const json = await response.json();
             setUser(json);
         }

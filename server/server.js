@@ -26,9 +26,6 @@ app.use('/api/users/', usersController);
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`server is running on port ${PORT}`)
 });
-// app.listen(10000, () => {
-//     console.log(`server is running on port 10000`)
-// });
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build/index.html'))

@@ -17,7 +17,7 @@ const CreateBlog = () => {
     
     useEffect(() => {
         const fetchCategories = async () => {
-            const response = await fetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/categories');
+            const response = await fetch('https://lords-of-blogtown.onrender.com/api/blogs/categories');
             const json = await response.json();
             setCategories(json);
         }

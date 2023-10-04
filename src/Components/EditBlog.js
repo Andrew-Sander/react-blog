@@ -85,7 +85,7 @@ const EditBlog = ({ id, onEdit, onDelete, hideModalEdit }) => {
     const handleDelete = () => {
         const blog = { id, title, description, author, category };
 
-        fetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/delete', {
+        fetch('https://lords-of-blogtown.onrender.com/api/blogs/delete', {
         method: 'DELETE',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(blog)

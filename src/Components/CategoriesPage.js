@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 const CategoriesPage = () => {
 
     const { category } = useParams();
-    const { data:blogs, isPending, error } = useFetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/category/' + category);
+    const { data:blogs, isPending, error } = useFetch('https://lords-of-blogtown.onrender.com/api/blogs/category/' + category);
 
     return ( 
         <div>

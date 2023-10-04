@@ -12,8 +12,8 @@ const BlogDetails = () => {
 
     const [isOpenDelete, setIsOpenDelete] = useState(false);
 
-    const { data: posts, error, isPending } = useFetch('http://localhost:8000/api/blogPosts/' + id);
-    const { data: blog, blogError, blogIsPending } = useFetch('http://localhost:8000/api/blogs/id/' + id);
+    const { data: posts, error, isPending } = useFetch('https://lords-of-blogtown.onrender.com/api/blogPosts/' + id);
+    const { data: blog, blogError, blogIsPending } = useFetch('https://lords-of-blogtown.onrender.com/api/blogs/id/' + id);
     const [newPosts, setNewPosts] = useState ([]);
     const [selectedPostID, setSelectedPostID] = useState(0);
 
