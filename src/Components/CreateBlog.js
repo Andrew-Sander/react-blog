@@ -48,7 +48,7 @@ const CreateBlog = () => {
             setCategoryValidation('please choose a category');
             return;
         } else {
-            fetch('https://lords-of-blogtown.onrender.com:8000/api/blogs/create', {
+            fetch('https://lords-of-blogtown.onrender.com/api/blogs/create', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(blog)
