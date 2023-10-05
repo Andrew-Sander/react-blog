@@ -42,12 +42,12 @@ const BlogDetails = () => {
 
     const handleDelete = async () => {
         try {
-            const response = await fetch(`https://lords-of-blogtown.onrender.com:8000/api/blogPosts/post/${selectedPostID}`);
+            const response = await fetch(`https://lords-of-blogtown.onrender.com/api/blogPosts/post/${selectedPostID}`);
             const postToDelete = await response.json();
     
             console.log("Deleting post:", postToDelete);
             
-            const deleteResponse = await fetch('https://lords-of-blogtown.onrender.com:8000/api/blogPosts/delete', {
+            const deleteResponse = await fetch('https://lords-of-blogtown.onrender.com/api/blogPosts/delete', {
                 method: 'DELETE',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(postToDelete)
@@ -78,7 +78,7 @@ const BlogDetails = () => {
                                 {currentUsername === blog.author && (
                                     <div>
                                         <h3 className="d-inline-block me-3 mt-3">You own this blog</h3>
-                                        <Link to={'/profile'}><strong>Edit or Make a Post</strong></Link> 
+                                        <Link to={'/profile#blogs'}><strong>Edit or Make a Post in your Profile</strong></Link> 
                                     </div>
                                 )}
                                 <div className="blogdetails-header">
@@ -109,7 +109,7 @@ const BlogDetails = () => {
                                 </div>
                             ))}
                         </div>
-                    ) : <p>This blog doesn't have any posts yet!</p>}
+                    ) : <p>This blog doesn't have any posts yet...</p>}
                 </div>
                 <div className="blog-details col-sm-4">
                     { blog && (

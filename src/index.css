@@ -318,7 +318,7 @@ ul {
 
 /* profile page */
 .profile-page {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 .profile-page h3 {
@@ -335,7 +335,7 @@ ul {
   margin: 0;
 }
 .about-box {
-  padding: 20px;
+  padding: 20px 65px;
   border-radius: 5px;
   box-shadow: 1px 3px 5px rgb(186, 196, 226);
 }

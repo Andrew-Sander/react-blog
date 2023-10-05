@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 
 
 const Profile = () => {
-
     const [currentUsername, setCurrentUsername] = useState('');
 
     const currentUser = useCurrentUser();
@@ -84,7 +83,7 @@ const Profile = () => {
                     <button style={{display:"none"}} id='save-btn' type="submit" onClick={handleSave}>Save</button>
                 </form>
             </div>
-            <div>
+            <div id='blogs'>
                 <div className='profile-blogs'>
                     <h2>My Blogs:</h2>
                     <Link to={'/create'}><h3 style={{textDecoration:"underline"}} className='mt-1 d-inline-block'>Start a new blog</h3></Link>

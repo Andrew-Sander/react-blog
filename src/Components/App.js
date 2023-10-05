@@ -8,7 +8,7 @@ import PublicProfile from './PublicProfile';
 import { RequireAuth } from './RequireAuth';
 import React from 'react';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { Amplify } from 'aws-amplify';
 import awsExports from '../aws-exports';
@@ -22,7 +22,7 @@ function App() {
 
   return (
     <Authenticator.Provider>
-      <BrowserRouter>
+      <Router>
       <div className="App">
         <Navbar />
         <div className="content">
@@ -45,7 +45,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </BrowserRouter>
+    </Router>
     </Authenticator.Provider>
     
   );
