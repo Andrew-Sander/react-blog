@@ -40,7 +40,7 @@ const Profile = () => {
         console.log(currentUsername);
         const userToPost = { name:currentUsername, about };
 
-        fetch('https://lords-of-blogtown.onrender.com:8000/api/users/update', {
+        fetch('https://lords-of-blogtown.onrender.com/api/users/update', {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userToPost)
