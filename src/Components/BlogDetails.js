@@ -91,27 +91,8 @@ const BlogDetails = () => {
                     </div>
                 )} 
             </div>
-            
             <div className="row">
-                <div className="blog-details col-8">
-                    { isPending && <div>Loading...</div> }
-                    { error && <div>{ error }</div>}
-                    { newPosts && newPosts.length > 0 ? (
-                        <div>
-                            { newPosts.map((post, index) => (
-                                <div id={`${post.title}`} className="blogpost-preview" key={index}>
-                                    <h2>{post.title}</h2>
-                                    <article>{post.body}</article>
-                                    <p>Posted {post.date}</p>
-                                    {currentUsername === post.author && (
-                                        <button onClick={() => showModalDelete(post.postID)}  className="delete-button">Delete Post</button>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    ) : <p>This blog doesn't have any posts yet...</p>}
-                </div>
-                <div className="blog-details col-sm-4">
+            <div className="blog-details col-md-4 order-md-last">
                     { blog && (
                         <div>
                             { blog.map((blog, index) => (
@@ -136,6 +117,24 @@ const BlogDetails = () => {
                             )}
                         </ul>
                     </div>
+                </div>
+                <div className="blog-details col-md-8 order-md-first">
+                    { isPending && <div>Loading...</div> }
+                    { error && <div>{ error }</div>}
+                    { newPosts && newPosts.length > 0 ? (
+                        <div>
+                            { newPosts.map((post, index) => (
+                                <div id={`${post.title}`} className="blogpost-preview" key={index}>
+                                    <h2>{post.title}</h2>
+                                    <article>{post.body}</article>
+                                    <p>Posted {post.date}</p>
+                                    {currentUsername === post.author && (
+                                        <button onClick={() => showModalDelete(post.postID)}  className="delete-button">Delete Post</button>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    ) : <p>This blog doesn't have any posts yet...</p>}
                 </div>
             </div>
             <Modal show={isOpenDelete} onHide={hideModalDelete}>
